@@ -28,5 +28,5 @@ jobs:
       with:
         app-name: 'everis-ja-todolist'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_980f1484adb2489cb7bc802841c1fb13 }}
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6061280F46934BD7B108CD443F0A7B1E }}
         package: '${{ github.workspace }}/Backend/everis-dar-todo-list-ms-1/target/*.jar'
