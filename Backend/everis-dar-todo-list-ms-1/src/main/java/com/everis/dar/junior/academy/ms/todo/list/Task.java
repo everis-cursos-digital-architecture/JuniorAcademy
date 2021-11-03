@@ -1,9 +1,6 @@
 package com.everis.dar.junior.academy.ms.todo.list;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * This class is used to represent and instantiate the different tasks
@@ -11,6 +8,7 @@ import javax.persistence.Id;
  * @author everis
  */
 @Entity
+@Table(name="My_Table")
 public class Task {
 
 	/**

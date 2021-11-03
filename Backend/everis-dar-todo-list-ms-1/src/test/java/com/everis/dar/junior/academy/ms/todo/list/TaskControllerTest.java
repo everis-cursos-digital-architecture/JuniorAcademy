@@ -63,7 +63,6 @@ public class TaskControllerTest {
 		this.task = new Task();
 		this.task.setDescription(this.taskDescription);
 		this.task.setStatus(this.taskStatus);
-    	JacksonTester.initFields(this, new ObjectMapper());
     	this.mvc = MockMvcBuilders.standaloneSetup(this.taskController)
                 .build();
     }

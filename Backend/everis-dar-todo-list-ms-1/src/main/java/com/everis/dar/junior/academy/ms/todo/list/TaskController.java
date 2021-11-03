@@ -4,14 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Class used to control the different requests related to
@@ -23,11 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TaskController {
 
+
 	/**
 	 * Object used to access task data from the repository.
 	 */
 	@Autowired
-	private TaskRepository taskRepository;
+	TaskRepository taskRepository;
 
 	/**
 	 * Service used to list all the tasks.
@@ -35,7 +29,7 @@ public class TaskController {
 	 */
 	@GetMapping("/tasks")
 	public List<Task> getTasks() {
-		return (List<Task>) this.taskRepository.findAll();
+		return (List<Task>) taskRepository.findAll();
 	}
 
 	/**
@@ -43,9 +37,9 @@ public class TaskController {
 	 * @param id Task ID searched.
 	 * @return Task Object.
 	 */
-	@GetMapping("/taskById")
-	public Optional<Task> getTaskById(@RequestParam final Long id) {
-		return this.taskRepository.findById(id);
+	@GetMapping("/tasks/{id}")
+	public Optional<Task> getTaskById(@PathVariable final Long id) {
+		return taskRepository.findById(id);
 	}
 
 	/**
@@ -55,7 +49,7 @@ public class TaskController {
 	 */
 	@PostMapping("/tasks")
 	public Task addTask(@RequestBody final Task task) {
-		return this.taskRepository.save(task);
+		return taskRepository.save(task);
 	}
 
 	/**
@@ -65,7 +59,7 @@ public class TaskController {
 	 */
 	@PutMapping("/tasks")
 	public Task updateTask(@RequestBody final Task task) {
-		return this.taskRepository.save(task);
+		return taskRepository.save(task);
 	}
 
 	/**
@@ -74,7 +68,7 @@ public class TaskController {
 	 */
 	@DeleteMapping("/tasks")
 	public void deleteTask(@RequestBody final Task task) {
-		this.taskRepository.delete(task);
+		taskRepository.delete(task);
 	}
 
 	/**
@@ -83,7 +77,7 @@ public class TaskController {
 	 */
 	@DeleteMapping("/taskById")
 	public void deleteTaskbyId(@RequestParam final Long id) {
-		this.taskRepository.deleteById(id);
+		taskRepository.deleteById(id);
 	}
 
 	/**
@@ -91,7 +85,7 @@ public class TaskController {
 	 */
 	@DeleteMapping("/allTasks")
 	public void deleteAll() {
-		this.taskRepository.deleteAll();
+		taskRepository.deleteAll();
 	}
 
 }

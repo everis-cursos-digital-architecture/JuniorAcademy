@@ -49,7 +49,7 @@ public class TaskRepositoryTest {
 	 */
 	@Test
 	public void saveTask() {
-		final Task newTask = this.taskRepository.save(this.task);
+		final Task newTask = taskRepository.save(this.task);
 		assertThat(newTask.getDescription())
 			.isEqualTo(this.taskDescription);
 	}
@@ -59,12 +59,12 @@ public class TaskRepositoryTest {
 	 */
 	@Test
 	public void removeTask() {
-		final Task newTask = this.taskRepository.save(this.task);
-		final Boolean isSaved = this.taskRepository.
+		final Task newTask = taskRepository.save(this.task);
+		final Boolean isSaved = taskRepository.
 				existsById(this.task.getId());
 		assertThat(isSaved).isTrue();
-		this.taskRepository.delete(this.task);
-		final Boolean exists = this.taskRepository.
+		taskRepository.delete(this.task);
+		final Boolean exists = taskRepository.
 				existsById(this.task.getId());
 		assertThat(exists).isFalse();
 	}
@@ -75,12 +75,12 @@ public class TaskRepositoryTest {
 	 */
 	@Test
 	public void updateTask() {
-		final Task newTask = this.taskRepository.save(this.task);
+		final Task newTask = taskRepository.save(this.task);
 		assertThat(newTask.getDescription())
 		.isEqualTo(this.taskDescription);
 		newTask.setDescription(this.taskDescription + " UPDATED ");
 		newTask.setStatus(this.taskStatus + " UPDATED ");
-		final Task updatedTask = this.taskRepository.save(newTask);
+		final Task updatedTask = taskRepository.save(newTask);
 		assertThat(newTask.getDescription())
 		.isEqualTo(this.taskDescription + " UPDATED ");
 		assertThat(newTask.getStatus())
