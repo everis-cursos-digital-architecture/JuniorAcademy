@@ -3,6 +3,7 @@ package com.everis.dar.junior.academy.ms.todo.list;
 import java.util.List;
 import java.util.Optional;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -62,27 +63,31 @@ public class TaskController {
 		return taskRepository.save(task);
 	}
 
-	/**
-	 * Service used for delete an existing Task.
-	 * @param task Task to delete.
-	 */
-	@DeleteMapping("/tasks")
-	public void deleteTask(@RequestBody final Task task) {
-		taskRepository.delete(task);
-	}
 
 	/**
 	 * Service used to delete a task using its ID.
 	 * @param id
 	 */
-	@DeleteMapping("/taskById")
+	@DeleteMapping("/tasks")
 	public void deleteTaskbyId(@RequestParam final Long id) {
 		taskRepository.deleteById(id);
+	}
+
+
+	/**
+	 * Service used for delete an existing Task.
+	 * @param task Task to delete.
+	 */
+	@Hidden
+	@DeleteMapping("/tasksD")
+	public void deleteTask(@RequestBody final Task task) {
+		taskRepository.delete(task);
 	}
 
 	/**
 	 * Service used to delete all tasks from the repository.
 	 */
+	@Hidden
 	@DeleteMapping("/allTasks")
 	public void deleteAll() {
 		taskRepository.deleteAll();
